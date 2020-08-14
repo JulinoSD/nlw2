@@ -15,6 +15,6 @@ export default class connectionsController{
         await db('connection').insert({
             user_id
         })
-        return response.status(201).send('success')
+        return response.status(201).send();
     }
 }
