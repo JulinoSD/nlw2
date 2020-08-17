@@ -3,28 +3,51 @@ import React from 'react';
 import whatIcon from '../../assets/whatsapp.svg';
 
 import './styles.css';
+import api from '../../services/api';
 
-const TeacherItem = () => {
+export interface Teacher {
+    avatar: string,
+    bio: string,
+    cost: number,
+    id: number,
+    name: string,
+    subject: string,
+    whatsapp: string
+}
+
+interface TeacherItemProps {
+    teacher: Teacher
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection(){
+        api.post('connections', {
+            user_id: teacher.id
+        })
+    }
     return (
-    <article className="teacher-item">
-        <header>
-            <img src="https://www.facebook.com/photo?fbid=1833278073457805&set=a.178029572316005" alt="qualquer imagem"/>
-            <div>
-                <strong>Julino Segunda Dídimo</strong>
-                <span>Auxiliar</span>
-            </div>
-        </header>
+        <article className="teacher-item">
+            <header>
+                <img src={teacher.avatar} alt={teacher.name} />
+                <div>
+                    <strong>{teacher.name}</strong>
+                    <span>{teacher.subject}</span>
+                </div>
+            </header>
 
-        <p>Porque de fato eu não sei o que sei</p>
+            <p>{teacher.bio}</p>
 
-        <footer>
-            <p>Preço/hora <strong>25R$</strong></p>
-            <button type="button">
-                <img src={whatIcon} alt="Ícon do whatsapp"/>
+            <footer>
+                <p>Preço/hora <strong>{teacher.cost}</strong></p>
+                <a
+                target="_blank" 
+                onClick={createNewConnection} 
+                href={`https://wa.me/${teacher.whatsapp}`}>
+                    <img src={whatIcon} alt="Ícon do whatsapp" />
                 entrar em contato
-            </button>
-        </footer>
-    </article>
+                </a>
+            </footer>
+        </article>
     )
 }
 

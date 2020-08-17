@@ -69,11 +69,11 @@ export default class ClassesController {
                 user_id
             });
 
-            const classe_id = insertedClassesIds[0];
+            const class_id = insertedClassesIds[0];
 
             const classeSchedule = schedule.map((scheduleItem: ScheduleItem) => {
                 return ({
-                    classe_id,
+                    class_id,
                     week_day: scheduleItem.week_day,
                     from: convertHourToMin(scheduleItem.from),
                     to: convertHourToMin(scheduleItem.to),
