@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
-import styles from './styles';
 import LandingImg from '../../assets/images/landing.png';
 import study from '../../assets/images/icons/study.png';
 import darAulas from '../../assets/images/icons/give-classes.png';
 import HeartIcon from '../../assets/images/icons/heart.png';
+
+import styles from './styles';
+
 
 
 const Landing = () => {
@@ -16,6 +18,11 @@ const Landing = () => {
     function navigationToClasses() {
         navigate('GiveClasse')
     }
+    
+    function navigateToStudy() {
+        navigate('Study')
+    }
+
     return (
         <View style={styles.landing}>
             <Image source={LandingImg} style={styles.banner} />
@@ -26,7 +33,10 @@ const Landing = () => {
             </Text>
 
             <View style={styles.buttonsLanding}>
-                <RectButton style={[styles.button, styles.buttonPrimary]}>
+                <RectButton 
+                style={[styles.button, styles.buttonPrimary]}
+                onPress={navigateToStudy}
+                >
                     <Image source={study} />
                     <Text style={styles.buttontext}> Estudar </Text>
                 </RectButton>
