@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
         maxWidth: 160,
         marginVertical: 40,
     },
+    teacherlist: {
+        marginTop: -40,
+    },
 })
 
 export default styles
