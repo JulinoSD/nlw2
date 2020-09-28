@@ -37,9 +37,7 @@ function TeacherList() {
     }, [])
 
     function toogleIFilterVisible() {
-        return (
-            setFilter(!isFilterVisible)
-        )
+        setFilter(!isFilterVisible)
     }
 
     async function handleFilterSubmit() {
